@@ -5,17 +5,22 @@ import com.eurotech.pages.LoginPage;
 import com.eurotech.utilities.BrowserUtils;
 import com.eurotech.utilities.ConfigurationReader;
 import com.eurotech.utilities.Driver;
+import com.eurotech.utilities.ExcelUtil;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
+import java.util.List;
+import java.util.Map;
 
 public class LoginStepDefs {
 
     LoginPage loginPage = new LoginPage();
     DashboardPage dashboardPage = new DashboardPage();
+    ExcelUtil excelUtil = new ExcelUtil("src/test/resources/EurotechTestLast.xls","Test Data");
+    List<Map<String, String>> dataList = excelUtil.getDataList();
 
     @Given("The user is on the login page")
     public void the_user_is_on_the_login_page() {
@@ -74,6 +79,23 @@ public class LoginStepDefs {
 //            Assert.assertEquals(expectedMessage,actualMessage);
 //            System.out.println(actualMessage);
         }
+
+    @When("The user enters {string} and row number {int}")
+    public void the_user_enters_and_row_number(String sheetName, Integer rowNumber) {
+
+
+        loginPage.login(dataList.get(rowNumber).get("Username"),dataList.get(rowNumber).get("Password"));
+
+    }
+    @Then("The welcome message contains in excel {int}")
+    public void the_welcome_message_contains_in_excel(Integer rowNumberForName) {
+
+        String actualMessage= dashboardPage.welcomeMessage.getText();
+        Assert.assertTrue(actualMessage.contains(dataList.get(rowNumberForName).get("Name")));
+
+
+    }
+
 
 
 }
