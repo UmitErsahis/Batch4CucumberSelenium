@@ -95,6 +95,15 @@ public class LoginStepDefs {
 
 
     }
+    @Then("The user verify that company name {int}")
+    public void the_user_verify_that_company_name(Integer rowNumberCompany) {
+
+       String actualCompanyName= dashboardPage.getCompanyName(dataList.get(rowNumberCompany).get("Company"));
+       Assert.assertEquals(dataList.get(rowNumberCompany).get("Company"),actualCompanyName);
+
+
+
+    }
 
 
 
