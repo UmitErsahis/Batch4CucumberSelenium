@@ -18,6 +18,6 @@ public abstract class BasePage {
 
 
 
-    @FindBy(id = "rcc-confirm-button")
-    public WebElement understandBtn;
+    /*@FindBy(id = "rcc-confirm-button")
+    public WebElement understandBtn;*/
 }

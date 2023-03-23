@@ -43,8 +43,27 @@ public class LoginPage extends BasePage{
     @FindBy(linkText ="Login")
     public WebElement homePageLoginBtn;
 
-    @FindBy(xpath = "//span[@id='usrmsg']")
+    /*@FindBy(xpath = "//span[@id='usrmsg']")
+    public WebElement alrdyGivenName_Text_;*/
+
+    @FindBy(css ="#usrmsg")
     public WebElement alrdyGivenName_Text_;
+
+    @FindBy(xpath = "//div/span[@id='usrmsg']")
+    public WebElement warnungMessage_Text_;
+
+
+    @FindBy(css = "#headlogo")
+    public WebElement homeTitle_Text_;
+
+    @FindBy(linkText = "Login")
+    public WebElement loginLink_;
+
+    @FindBy(xpath = " //span[@id='pwmsg']")
+    public WebElement passwortWarnung_Text_;
+
+
+
 
 
 
@@ -77,115 +96,15 @@ public class LoginPage extends BasePage{
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @FindBy(id = "loginpage-input-email")
-    public WebElement usernameInput;
-
-    @FindBy(name = "password")
-    public WebElement passwordInput;
-
-    @FindBy(xpath = "//input[@type='submit']")
-    public WebElement loginBtn;
-
-    @FindBy(xpath = "//*[.='Invalid Credentials!']")
-    public WebElement warningMessage;
-
-    @FindBy(id = "dashboard-h1")
-    public WebElement dashboardText;
-
-    @FindBy(xpath = "//*[text()='Please include a valid email!']")
-    public WebElement warningMessageInclude;
-
-
-    @FindBy(xpath = "//*[contains(text(),'valid')]")
-    public WebElement warningMessageValid;
-
-
-    @FindBy(css = ".menu-list")
-    public List<WebElement> menuList;
-
-    @FindAll({
-            //or
-            @FindBy(id = "loginpage-input-email"),
-            @FindBy(name="email")
-    })
-    public WebElement userInputSecondWay;
-
-
-    @FindBys({
-            //and
-            @FindBy(tagName = "p"),
-            @FindBy(id = "dashboard-user-icon")
-    })
-    public WebElement dashboardMessage;
-
-
-
-    public void login(String username,String password){
-        usernameInput.sendKeys(username);
-        passwordInput.sendKeys(password);
-        understandBtn.click();
-        loginBtn.click();
+    public void korrektheitUberprüf_mth(){
+        BrowserUtils.waitFor(2);
+        homePageLoginBtn.click();
+        BrowserUtils.waitFor(2);
+        anmeldenBtn_.click();
+        BrowserUtils.waitFor(2);
+        registerUserName_.sendKeys(faker.internet().password(4,12));
+        BrowserUtils.waitFor(4);
     }
-
-
-
-
-
-    /*public void loginAsTeacher(){
-        String username= ConfigurationReader.get("usernameTeacher");
-        String password= ConfigurationReader.get("passwordTeacher");
-        usernameInput.sendKeys(username);
-        passwordInput.sendKeys(password);
-        understandBtn.click();
-        loginBtn.click();
-
-
-        }
-    public void loginAsStudent(){
-        usernameInput.sendKeys(ConfigurationReader.get("usernameStudent"));
-        passwordInput.sendKeys(ConfigurationReader.get("passwordStudent"));
-        understandBtn.click();
-        loginBtn.click();
-
-    }
-    public void loginAsDeveloper(){
-        usernameInput.sendKeys(ConfigurationReader.get("usernameDeveloper"));
-        passwordInput.sendKeys(ConfigurationReader.get("passwordDeveloper"));
-        understandBtn.click();
-        loginBtn.click();
-
-
-    }
-
-    public String  getDisapperingWarningMessage(String message){
-        String actualMessage =null;
-
-        if(message.contains("@")){
-            actualMessage=usernameInput.getAttribute("validationMessage");
-        }else if(message.contains("valid")) {
-            actualMessage=warningMessageValid.getText();
-        }
-        return actualMessage;
-
-
-
-
-    }*/
 
 
 }
