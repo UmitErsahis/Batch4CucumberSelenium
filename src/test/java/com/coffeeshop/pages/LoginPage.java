@@ -67,13 +67,13 @@ public class LoginPage extends BasePage{
 
 
 
-    public void login_mth(){
+    public void login_mth(String username, String password){
         actions.moveToElement(homePageLoginBtn).click().perform();
-        BrowserUtils.waitFor(10);
-        usernameInput_.sendKeys("umit");
-        BrowserUtils.waitFor(10);
-        passwordInput_.sendKeys("Az12345%");
-        BrowserUtils.waitFor(10);
+        BrowserUtils.waitFor(3);
+        usernameInput_.sendKeys(username);
+        BrowserUtils.waitFor(3);
+        passwordInput_.sendKeys(password);
+        BrowserUtils.waitFor(3);
         loginSubmit_.click();
 
     }

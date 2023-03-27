@@ -11,8 +11,10 @@ public class Logout extends BasePage {
     public static WebElement logoutBtn_;
 
     public void logout(){
-        actions.moveToElement(logoutBtn_).click().perform();
-        BrowserUtils.waitFor(5);
+        //actions.moveToElement(logoutBtn_).click().perform();
+        //BrowserUtils.waitFor(2);
+       BrowserUtils.waitForClickablility(logoutBtn_,2);
+        logoutBtn_.click();
     }
 
     @FindBy(xpath = "//tbody/tr[1]")

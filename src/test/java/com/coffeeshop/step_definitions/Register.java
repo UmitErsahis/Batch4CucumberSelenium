@@ -20,7 +20,7 @@ public class Register {
 
         String url = ConfigurationReader.get("url1");
         Driver.get().get(url);
-        BrowserUtils.waitFor(4);
+        BrowserUtils.waitFor(3);
 
 
     }
@@ -33,12 +33,7 @@ public class Register {
 
     }
 
-    @When("The user enters login credentials the user able to login")
-    public void theUserEntersLoginCredentialsTheUserAbleToLogin() {
-        BrowserUtils.waitFor(4);
-        loginPage.login_mth();
-        BrowserUtils.waitFor(5);
-    }
+
 
     /*@Then("The user should be able to register")
     public void theUserShouldBeAbleToRegister() {
@@ -153,6 +148,8 @@ public class Register {
 
 
     }
+
+
 }
 
 

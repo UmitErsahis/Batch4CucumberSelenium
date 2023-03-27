@@ -1,17 +1,14 @@
 
-Feature: Coffeeshop
+Feature: Coffeeshop Login-out Test
 
   @coffee
   Scenario:  Login Test
-    #Given The user is on the login page
-    #When The user enters login credentials the user able to login
+    Given The user is on the login page
+    When The user logs in using "umit" und "Az12345%"
 
   Scenario: Logout Test
-    #Given The user is on the login page
-    #Given The user is already logged in
-    #When The user clicks logout button user should logout
+    Given The user is on the login page
+    Given The user logs in using "umit" und "Az12345%"
+    When The user clicks logout button user should logout
 
-  #Scenario: Register Test
-    #Given The user is on the login page
-    #When The user enters register credentials
-    #Then The user able to register
+
