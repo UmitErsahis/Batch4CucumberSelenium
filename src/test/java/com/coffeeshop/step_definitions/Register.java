@@ -20,6 +20,7 @@ public class Register {
 
         String url = ConfigurationReader.get("url1");
         Driver.get().get(url);
+        Driver.get().manage().window().maximize();
         BrowserUtils.waitFor(3);
 
 

@@ -2,6 +2,7 @@ package com.coffeeshop.step_definitions;
 
 import com.coffeeshop.pages.WarenkorbPage;
 import com.coffeeshop.utilities.BrowserUtils;
+import com.coffeeshop.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,6 +15,7 @@ public class Warenkorb {
 
     @Then("logged User Name {string} should be showed under Warenkorb Badge")
     public void loggedUserNameShouldBeShowedUnderWarenkorbBadge(String userName) {
+        Driver.get().manage().window().maximize();
         BrowserUtils.waitFor(3);
         String actualUsername=warenkorbPage.wrnkrbUserName_Text.getText();
         System.out.println(actualUsername);
@@ -42,6 +44,8 @@ public class Warenkorb {
 
     @And("The user selects that how many he wants from this Artikel")
     public void theUserSelectsThatHowManyHeWantsFromThisArtikel() {
+
+        BrowserUtils.scrollToElement(warenkorbPage.artikelQuantity_loc);
         warenkorbPage.artikelQuantity_loc.click();
         BrowserUtils.waitFor(2);
         warenkorbPage.artikelQuantity_loc.clear();
@@ -76,4 +80,6 @@ public class Warenkorb {
 
 
     }
+
+
 }
