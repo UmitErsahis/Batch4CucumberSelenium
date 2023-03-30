@@ -39,6 +39,21 @@ public class WarenkorbPage extends BasePage {
     @FindBy (css = "#msg-cart")
     public WebElement wrnkrbhinzfgn_loc;
 
+    @FindBy (xpath = "//*[@id=\"setcart\"]/button[1]")
+    public WebElement delete_button;
+    @FindBy (xpath = "//*[@id=\"shopcart\"]/div[2]/h2")
+    public WebElement wrnkrbloschn;
+
+
+
+
+    @FindBy (xpath = "//*[@id=\"shoppingcart\"]")
+    public WebElement chartButton;
+
+    @FindBy (xpath = "//*[@id=\"shoplist\"]/tbody/tr[2]/td[4]/a")
+    public WebElement einkaufenButton;
+
+
 
 
 

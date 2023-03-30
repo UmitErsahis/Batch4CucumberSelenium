@@ -70,6 +70,8 @@ public class Register {
         System.out.println(actualMessage);
     }
 
+
+
     @When("a new name not DB is entered")
     public void aNewNameNotDBIsEntered() {
         loginPage.korrektheitUberprüf_mth();
@@ -151,6 +153,16 @@ public class Register {
     }
 
 
+    @When("The user enter one passwort {string}")
+    public void theUserEnterOnePasswort(String passwort) {
+        loginPage.registerpassword_.sendKeys(passwort);
+        loginPage.registerpwrep_.sendKeys(passwort);
+        BrowserUtils.waitFor(2);
+        loginPage.registercheck_.click();
+        BrowserUtils.waitFor(2);
+        loginPage.registerBtn_.click();
+        BrowserUtils.waitFor(3);
+    }
 }
 
 

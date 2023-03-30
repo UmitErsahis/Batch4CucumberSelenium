@@ -1,6 +1,7 @@
 package com.coffeeshop.pages;
 
 import com.coffeeshop.utilities.BrowserUtils;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -62,6 +63,29 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = " //span[@id='pwmsg']")
     public WebElement passwortWarnung_Text_;
 
+    @FindBy(css = " #login-username-msg")
+    public WebElement loginErrorMsg_loc;
+
+
+    @FindBy(css = "#login-password-msg")
+    public WebElement bntznameundpaswortFalsch_loc;
+
+    @FindBy(xpath = "//input[@id='login-username']")
+    public WebElement usernamePlatzhalter;
+
+
+    @FindBy(xpath = "//input[@id='login-password']")
+    public WebElement passwordPlatzhalter;
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -104,6 +128,10 @@ public class LoginPage extends BasePage{
         BrowserUtils.waitFor(2);
         registerUserName_.sendKeys(faker.internet().password(4,12));
         BrowserUtils.waitFor(4);
+    }
+
+    public void errorMessageText_mthd(String expectedText, String actualText){
+        Assert.assertEquals(expectedText,actualText);
     }
 
 

@@ -81,5 +81,29 @@ public class Warenkorb {
 
     }
 
+    @And("User can delete Warenkorb")
+    public void userCanDeleteWarenkorb() {
+        warenkorbPage.delete_button.click();
+    }
+
+    @And("The user clicks on Shop Chart Button")
+    public void theUserClicksOnShopChartButton() {
+        warenkorbPage.chartButton.click();
+    }
+
+    @And("The user clicks on the button in den Einkaufen")
+    public void theUserClicksOnTheButtonInDenEinkaufen() {
+        warenkorbPage.einkaufenButton.click();
+
+    }
+
+    @Then("Text x{string} should be seen on the screen")
+    public void textXShouldBeSeenOnTheScreen(String expectedMessage) {
+        BrowserUtils.waitFor(2);
+        String actualMessage2=warenkorbPage.wrnkrbloschn.getText();
+        System.out.println(actualMessage2);
+        Assert.assertEquals(expectedMessage, actualMessage2);
+    }
+
 
 }

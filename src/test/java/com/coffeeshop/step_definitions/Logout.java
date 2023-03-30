@@ -18,4 +18,11 @@ public class Logout {
         logoutPage.logout();
         BrowserUtils.waitFor(2);
     }
+
+    @Given("The user logs in using {string} und {string}")
+    public void theUserLogsInUsingUnd(String username, String password) {
+        BrowserUtils.waitFor(2);
+        loginPage.login_mth(username, password);
+        BrowserUtils.waitFor(2);
+    }
 }
